@@ -1,0 +1,45 @@
+.card_container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 2.25rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  background-color: rgb(113, 111, 113);
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  box-shadow: inset 3px 3px 10 #000;
+
+  .card {
+    width: 4.75rem;
+    height: 4.75rem;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    font-size: 1.75rem;
+    transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+    
+  }
+
+  .hidden {
+    background-color: rgb(20, 18, 20);
+    transform: rotateY(-180deg);
+    
+
+  }
+
+  .visible {
+    background-color: rgb(2, 179, 228);
+    transform: rotateY(0deg);
+  }
+
+  .loose {
+    background-color: rgb(216, 36, 36);
+  }
+}
+
+

@@ -1,0 +1,38 @@
+@import "./css_reset.scss";
+@import "./card.scss";
+@import "./media_query.scss";
+
+
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+
+}
+.title {
+  margin: 2.25rem 0rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+}
+.score_board {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  
+  justify-content: space-between;
+  align-items: center;
+  .restart_btn {
+    font-size: 0.875rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgb(44, 44, 44);
+  }
+  .restart_btn:hover {
+    color: rgb(8, 8, 8);
+  }
+}

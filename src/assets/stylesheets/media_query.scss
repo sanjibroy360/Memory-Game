@@ -1,0 +1,16 @@
+@media all and (max-width: 786px) {
+  html,
+  body {
+    font-size: 8px;
+  }
+
+  .score_board {
+    width: 65% !important;
+    button {
+      font-size: 1rem;
+    }
+  }
+  .card_container {
+    width: 60% !important;
+  }
+}
