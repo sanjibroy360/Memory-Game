@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "./component/Card";
 import { allCards } from "./utils/data";
-import has from "lodash";
+import _ from "lodash";
 
 export default class App extends Component {
   constructor(props) {
@@ -12,17 +12,6 @@ export default class App extends Component {
       score: 0,
     };
   }
-
-  handleFlip = (cardId, index) => {
-    let { cards, flippedCards } = this.state;
-    cards = cards.map((card) => {
-      if (card.cardId === cardId) {
-        card.isFlipped = true;
-      }
-      return card;
-    });
-    this.setState({ cards, flippedCards: [...flippedCards, cardId] });
-  };
 
   componentDidUpdate() {
     let { flippedCards, cards, score } = this.state;
@@ -49,26 +38,39 @@ export default class App extends Component {
               score,
               flippedCards: [],
             }),
-          425
+          450
         );
       }
     }
   }
 
   componentDidMount() {
-    let cards = has.cloneDeep(allCards);
+    let cards = _.cloneDeep(allCards);
     let shuffeledCards = this.shuffleCards(cards);
-    this.setState({ cards: shuffeledCards });
+    return this.setState({ cards: shuffeledCards });
   }
+
+  handleFlip = (cardId) => {
+    let { cards, flippedCards } = this.state;
+    if (flippedCards.length < 2) {
+      cards = cards.map((card) => {
+        if (card.cardId === cardId) {
+          card.isFlipped = true;
+        }
+        return card;
+      });
+      return this.setState({ cards, flippedCards: [...flippedCards, cardId] });
+    }
+  };
 
   hideAllCards = (cards) => {
     return cards.map((card) => ({ ...card, isFlipped: false }));
   };
 
   restartGame = () => {
-    let cards = has.cloneDeep(allCards);
+    let cards = _.cloneDeep(allCards);
     let shuffeledCards = this.shuffleCards(cards);
-    this.setState({ cards: shuffeledCards, flippedCards: [], score: 0 });
+    return this.setState({ cards: shuffeledCards, flippedCards: [], score: 0 });
   };
 
   shuffleCards = (cards) => {
@@ -97,7 +99,7 @@ export default class App extends Component {
                 <Card
                   cardInfo={card}
                   handleFlip={this.handleFlip}
-                  index={index}
+                  
                   noOfFlippedCards={flippedCards.length}
                 />
               </li>
