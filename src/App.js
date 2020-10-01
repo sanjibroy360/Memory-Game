@@ -59,7 +59,7 @@ export default class App extends Component {
   restartGame = () => {
     let cards = has.cloneDeep(allCards);
     let shuffeledCards = this.shuffleCards(cards);
-    this.setState({ cards: shuffeledCards, flippedCards: [] });
+    this.setState({ cards: shuffeledCards, flippedCards: [], score: 0 });
   };
 
   shuffleCards = (cards) => {
