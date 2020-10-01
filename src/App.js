@@ -13,38 +13,43 @@ export default class App extends Component {
     };
   }
 
-  handleFlip = (index) => {
+  handleFlip = (cardId, index) => {
     let { cards, flippedCards } = this.state;
-    cards[index].isFlipped = true;
-    this.setState({ cards, flippedCards: [...flippedCards, index] });
+    cards = cards.map((card) => {
+      if (card.cardId === cardId) {
+        card.isFlipped = true;
+      }
+      return card;
+    });
+    this.setState({ cards, flippedCards: [...flippedCards, cardId] });
   };
 
   componentDidUpdate() {
     let { flippedCards, cards, score } = this.state;
-    let card1 = cards[flippedCards[0]];
-    let card2 = cards[flippedCards[1]];
-    let blankFlippedCardContainer = [];
+    let card1Index = cards.findIndex((card) => card.cardId === flippedCards[0]);
+    let card2Index = cards.findIndex((card) => card.cardId === flippedCards[1]);
+
     if (flippedCards.length === 2) {
-      if (card1.iconId === card2.iconId) {
-        cards[flippedCards[0]].isMatched = true;
-        cards[flippedCards[1]].isMatched = true;
+      if (cards[card1Index].iconId === cards[card2Index].iconId) {
+        cards[card1Index].isMatched = true;
+        cards[card2Index].isMatched = true;
+        cards = this.hideAllCards(cards);
         score++;
         return this.setState({
           cards,
           score,
-          flippedCards: blankFlippedCardContainer,
+          flippedCards: [],
         });
       } else {
-        cards[flippedCards[0]].isFlipped = false;
-        cards[flippedCards[1]].isFlipped = false;
+        cards = this.hideAllCards(cards);
         return setTimeout(
           () =>
             this.setState({
               cards,
               score,
-              flippedCards: blankFlippedCardContainer,
+              flippedCards: [],
             }),
-          750
+          425
         );
       }
     }
@@ -55,6 +60,10 @@ export default class App extends Component {
     let shuffeledCards = this.shuffleCards(cards);
     this.setState({ cards: shuffeledCards });
   }
+
+  hideAllCards = (cards) => {
+    return cards.map((card) => ({ ...card, isFlipped: false }));
+  };
 
   restartGame = () => {
     let cards = has.cloneDeep(allCards);
@@ -84,7 +93,7 @@ export default class App extends Component {
         <ul className="card_container">
           {cards.map((card, index) => {
             return (
-              <li className="card" key={"card"+card.cardId}>
+              <li className="card" key={"card" + card.cardId}>
                 <Card
                   cardInfo={card}
                   handleFlip={this.handleFlip}

@@ -3,7 +3,7 @@ import React from "react";
 function Card({ cardInfo, handleFlip, index, noOfFlippedCards }) {
   return (
     <React.Fragment key={cardInfo.iconId}>
-      {cardInfo.isFlipped ? (
+      {cardInfo.isFlipped || cardInfo.isMatched ? (
         <div
           className={
             cardInfo.isFlipped &&
@@ -15,7 +15,7 @@ function Card({ cardInfo, handleFlip, index, noOfFlippedCards }) {
           <i className={cardInfo.icon} />
         </div>
       ) : (
-        <div className="hidden card" onClick={() => handleFlip(index)}></div>
+        <div className="hidden card" onClick={() => handleFlip(cardInfo.cardId)}></div>
       )}
     </React.Fragment>
   );
