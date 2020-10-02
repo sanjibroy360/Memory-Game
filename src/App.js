@@ -15,14 +15,13 @@ export default class App extends Component {
 
   componentDidUpdate() {
     let { flippedCards, cards, score } = this.state;
-    let card1Index = cards.findIndex((card) => card.cardId === flippedCards[0]);
-    let card2Index = cards.findIndex((card) => card.cardId === flippedCards[1]);
+    let card1Index = flippedCards[0];
+    let card2Index = flippedCards[1];
 
     if (flippedCards.length === 2) {
       if (cards[card1Index].iconId === cards[card2Index].iconId) {
         cards[card1Index].isMatched = true;
         cards[card2Index].isMatched = true;
-        cards = this.hideAllCards(cards);
         score++;
         return this.setState({
           cards,
@@ -30,7 +29,8 @@ export default class App extends Component {
           flippedCards: [],
         });
       } else {
-        cards = this.hideAllCards(cards);
+        cards[card1Index].isFlipped = false;
+        cards[card2Index].isFlipped = false;
         return setTimeout(
           () =>
             this.setState({
@@ -50,21 +50,12 @@ export default class App extends Component {
     return this.setState({ cards: shuffeledCards });
   }
 
-  handleFlip = (cardId) => {
+  handleFlip = (index) => {
     let { cards, flippedCards } = this.state;
     if (flippedCards.length < 2) {
-      cards = cards.map((card) => {
-        if (card.cardId === cardId) {
-          card.isFlipped = true;
-        }
-        return card;
-      });
-      return this.setState({ cards, flippedCards: [...flippedCards, cardId] });
+      cards[index].isFlipped = true;
+      return this.setState({ cards, flippedCards: [...flippedCards, index] });
     }
-  };
-
-  hideAllCards = (cards) => {
-    return cards.map((card) => ({ ...card, isFlipped: false }));
   };
 
   restartGame = () => {
@@ -99,7 +90,7 @@ export default class App extends Component {
                 <Card
                   cardInfo={card}
                   handleFlip={this.handleFlip}
-                  
+                  index={index}
                   noOfFlippedCards={flippedCards.length}
                 />
               </li>
