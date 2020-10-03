@@ -11,6 +11,7 @@ export default class App extends Component {
       cards: [],
       score: 0,
     };
+    this.timeoutId = 0;
   }
 
   componentDidUpdate() {
@@ -31,17 +32,24 @@ export default class App extends Component {
       } else {
         cards[card1Index].isFlipped = false;
         cards[card2Index].isFlipped = false;
-        return setTimeout(
-          () =>
+        this.timeoutId = setTimeout(
+          () => {
             this.setState({
               cards,
               score,
               flippedCards: [],
-            }),
-          450
+            })
+            return this.clearTimer();
+          }, 
+          1000  
         );
+        
       }
     }
+  }
+
+  clearTimer = () => {
+    clearTimeout(this.timeoutId)
   }
 
   componentDidMount() {

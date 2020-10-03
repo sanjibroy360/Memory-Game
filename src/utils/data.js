@@ -8,7 +8,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-paper-plane",
-
     isMatched: false,
     isFlipped: false,
     iconId: 0,
@@ -16,7 +15,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-bomb",
-
     isMatched: false,
     isFlipped: false,
     iconId: 1,
@@ -24,7 +22,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-bomb",
-
     isMatched: false,
     isFlipped: false,
     iconId: 1,
@@ -40,7 +37,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-biking",
-
     isMatched: false,
     isFlipped: false,
     iconId: 2,
@@ -48,7 +44,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-gift",
-
     isMatched: false,
     isFlipped: false,
     iconId: 3,
@@ -56,7 +51,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-gift",
-
     isMatched: false,
     isFlipped: false,
     iconId: 3,
@@ -64,7 +58,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-leaf",
-
     isMatched: false,
     isFlipped: false,
     iconId: 4,
@@ -72,7 +65,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-leaf",
-
     isMatched: false,
     isFlipped: false,
     iconId: 4,
@@ -80,7 +72,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-bolt",
-
     isMatched: false,
     isFlipped: false,
     iconId: 5,
@@ -89,7 +80,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-bolt",
-
     isMatched: false,
     isFlipped: false,
     iconId: 5,
@@ -97,7 +87,6 @@ export let allCards = [
   },
   {
     icon: "far fa-gem",
-
     isMatched: false,
     isFlipped: false,
     iconId: 6,
@@ -106,7 +95,6 @@ export let allCards = [
 
   {
     icon: "far fa-gem",
-
     isMatched: false,
     isFlipped: false,
     iconId: 6,
@@ -115,7 +103,6 @@ export let allCards = [
 
   {
     icon: "fas fa-anchor",
-
     isMatched: false,
     isFlipped: false,
     iconId: 7,
@@ -123,7 +110,6 @@ export let allCards = [
   },
   {
     icon: "fas fa-anchor",
-
     isMatched: false,
     isFlipped: false,
     iconId: 7,
